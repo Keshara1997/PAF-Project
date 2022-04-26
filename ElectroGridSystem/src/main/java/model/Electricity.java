@@ -76,14 +76,13 @@ public class Electricity
 			 {return "Error while connecting to the database for reading."; }
 			 
 			 // Prepare the html table to be displayed
-			 output = "<table border='1'><tr><th>Request ID</th><th>Full Name</th><th>National Identity Card No</th>" +
+			 output = "<table border='1'><tr><th>Request ID</th><th>Full Name</th><th>NIC No</th>" +
 					 "<th>Phone Number</th>" +
 					 "<th>Email</th>" +
-					 "<th>Address of the premises where electricity supply is required</th>" +
+					 "<th>Service Connection Address</th>" +
 					 "<th>Postal Code of Area</th>" +
 					 "<th>Type of Service</th>" +
-					 "<th>Purpose of Electricity Usage</th>" +
-					 "<th>Update</th><th>Remove</th></tr>";
+					 "<th>Purpose of Electricity Usage</th></tr>";
 			
 			 String query = "select * from electricityconnectionrequests";
 			 Statement stmt = con.createStatement();
@@ -114,7 +113,7 @@ public class Electricity
 				 output += "<td>" + purpose + "</td></tr>";
 				 
 				 // buttons
-				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>" + "<td><form method='post' action='electricityrequests.jsp'>" + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>" + "<input name='requestId' type='hidden' value='" + requestId + "'>" + "</form></td></tr>";
+				 //output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>" + "<td><form method='post' action='electricityrequests.jsp'>" + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>" + "<input name='requestId' type='hidden' value='" + requestId + "'>" + "</form></td></tr>";
 			 }
 			 con.close();
 			 // Complete the html table
@@ -201,7 +200,7 @@ public class Electricity
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while deleting the item.";
+			 output = "Error while deleting the electricity connection.";
 			 System.err.println(e.getMessage());
 		 }
 		 return output;
